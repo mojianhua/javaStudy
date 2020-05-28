@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- id唯一标识，class,包名 -->
+    <bean id="person01" class="bean.Person">
+        <!-- property标签为person的属性赋值，name="age" 属性名，value="12" 为了属性赋值-->
+        <property name="lastName" value="张三"></property>
+        <property name="age" value="12"></property>
+        <property name="email" value="123456@qq.com"></property>
+        <property name="gender" value="人妖"></property>
+    </bean>
+</beans>
