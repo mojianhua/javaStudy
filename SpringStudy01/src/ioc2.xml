@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- id唯一标识，class,包名 -->
+    <bean id="person01" class="bean.Person">
+        <!-- 正确的bean -->
+        <property name="lastName">
+            <!-- 默认null赋值 -->
+            <null></null>
+        </property>
+        <property name="car">
+            <bean>
+
+            </bean>
+        </property>
+    </bean>
+</beans>
