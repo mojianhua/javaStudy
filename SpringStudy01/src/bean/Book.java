@@ -17,6 +17,11 @@ public class Book {
     }
 
     public String getAuthor(){
-        return author;
+        return  author;
+    }
+
+    @Override
+    public String toString(){
+        return "[Book [bookName = " + bookName + ", author = " + author + "]";
     }
 }

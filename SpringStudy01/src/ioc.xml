@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p = "http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- id唯一标识，class,包名 -->
     <bean id="person01" class="bean.Person">
@@ -10,4 +11,22 @@
         <property name="email" value="123456@qq.com"></property>
         <property name="gender" value="人妖"></property>
     </bean>
+
+    <bean id="person02" class="bean.Person">
+        <!-- property标签为person的属性赋值，name="age" 属性名，value="12" 为了属性赋值-->
+        <property name="lastName" value="张四"></property>
+        <property name="age" value="13"></property>
+        <property name="email" value="12345689@qq.com"></property>
+        <property name="gender" value="女人妖"></property>
+    </bean>
+
+    <bean id="person03" class="bean.Person">
+        <constructor-arg name="lastName" value="小见"></constructor-arg>
+        <constructor-arg name="age" value="10"></constructor-arg>
+        <constructor-arg name="gender" value="rr"></constructor-arg>
+        <constructor-arg name="email" value="eeeee"></constructor-arg>
+    </bean>
+
+    <!-- 简写,要在头部引入，xmlns:p = "http://www.springframework.org/schema/p" -->
+    <bean id="person04" class="bean.Person" p:age="19" p:email="123@qq.com" p:lastName="jj" p:gender="rrrr"></bean>
 </beans>
