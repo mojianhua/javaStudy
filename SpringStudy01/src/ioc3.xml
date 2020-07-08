@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p = "http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- id唯一标识，class,包名,规范的 -->
+    <bean id="car01" class="bean.CarNew">
+        <property name="carName" value="ccnnn"></property>
+        <property name="color" value="yellow"></property>
+        <property name="price" value="3000000"></property>
+    </bean>
+    <bean id="person01" class="bean.PersonNew">
+        <!-- lastName="null" -->
+        <property name="lastName">
+            <!-- 进行的赋值 -->
+            <null></null>
+        </property>
+        <!-- rel,代表引用外面的一个值 -->
+        <property name="carNew" ref="car01"></property>
+    </bean>
+</beans>
