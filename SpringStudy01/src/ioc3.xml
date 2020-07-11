@@ -1,21 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p = "http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
     <!-- id唯一标识，class,包名,规范的 -->
-    <bean id="car01" class="bean.CarNew">
+    <bean id="car011" class="bean.CarNew">
         <property name="carName" value="ccnnn"></property>
         <property name="color" value="yellow"></property>
         <property name="price" value="3000000"></property>
     </bean>
-    <bean id="person01" class="bean.PersonNew">
+    <bean id="person011" class="bean.PersonNew">
         <!-- lastName="null" -->
         <property name="lastName">
             <!-- 进行的赋值 -->
             <null></null>
         </property>
         <!-- rel,代表引用外面的一个值 -->
-        <property name="carNew" ref="car01"></property>
+<!--        <property name="carNew" ref="car011"></property>-->
+        <property name="carNew">
+            <!-- 对象我们可以使用bean标签 carNew = new CarNew();引用内部bean -->
+            <bean class="bean.CarNew">
+                <property name="color" value="red123456"></property>
+            </bean>
+        </property>
     </bean>
+
+    <bean id="bookNew01" class="bean.BookNew">
+        <property name="bookName" value="东游记"></property>
+    </bean>
+
+    <bean id="personNew02" class="bean.PersonNew">
+        <!-- 如何为list类型赋值 -->
+        <property name="bookNew">
+            <list>
+                <!-- list标签体中添加没一个元素 -->
+                <bean class="bean.BookNew" p:bookName="西游记"></bean>
+                <!-- 引用外部一个元素 -->
+                <ref bean="bookNew01"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="personNew03" class="bean.PersonNew">
+        <!-- 如何为map类型赋值 -->
+        <property name="maps">
+            <!-- maps = new LinkedHashMap<> -->
+            <map>
+                <!-- 一个entry代表一个键值对 -->
+                <entry key="key01" value="阿吉"></entry>
+                <entry key="key02" value="18"></entry>
+                <!-- 引用外部一个元素 -->
+                <entry key="key03" value-ref="bookNew01"></entry>
+                <entry key="key04">
+                    <bean class="bean.CarNew">
+                        <property name="carName" value="奥迪"></property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <!-- private Properties properties; -->
+    <bean id="personNew04" class="bean.PersonNew">
+        <property name="properties">
+            <!-- properties = new Properties();所有的k=v都是string -->
+            <props>
+                <prop key="username">root</prop>
+                <prop key="password">123456</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!-- util命名空间创建集合类型的bean，方便别人引用 -->
+    <bean id="personNew05" class="bean.PersonNew">
+        <property name="maps" ref="myMap01"></property>
+    </bean>
+
+    <util:map id="myMap01">
+        <!-- 添加元素 -->
+        <entry key="key01" value="打杂"></entry>
+        <entry key="key02" value="时间"></entry>
+        <entry key="key04">
+            <bean class="bean.CarNew">
+                <property name="carName" value="马自达"></property>
+            </bean>
+        </entry>
+        <entry key="key05">
+            <value>李四</value>
+        </entry>
+    </util:map>
+
+    <util:list id="myList01">
+        <list></list>
+        <bean class="bean.PersonNew"></bean>
+        <value>13</value>
+        <ref bean="myMap01"></ref>
+    </util:list>
 </beans>
