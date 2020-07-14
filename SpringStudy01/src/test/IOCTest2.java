@@ -12,7 +12,8 @@ import java.util.Map;
 
 public class IOCTest2 {
 
-    private static ApplicationContext ioc = new ClassPathXmlApplicationContext("ioc3.xml");
+    //private static ApplicationContext ioc = new ClassPathXmlApplicationContext("ioc3.xml");
+    private static ApplicationContext ioc2 = new ClassPathXmlApplicationContext("ioc4.xml");
 
     public static void main(String[] args){
 //        PersonNew personNew = (PersonNew) ioc.getBean("person011");
@@ -42,9 +43,28 @@ public class IOCTest2 {
 //        PersonNew personNew05 = (PersonNew) ioc.getBean("personNew04");
 //        System.out.println(personNew05.getProperties());
 
-        //集合类型命名空间，util
-        PersonNew personNew06 = (PersonNew) ioc.getBean("personNew05");
-        Map<String,Object> maps = personNew06.getMaps();
-        System.out.println(maps);
+//        //集合类型命名空间，util
+//        PersonNew personNew06 = (PersonNew) ioc.getBean("personNew05");
+//        Map<String,Object> maps = personNew06.getMaps();
+//        System.out.println(maps);
+
+//        // 级联属性，赋值，级联属性：属性的属性,注意：原来的bean的值可能被修改
+//        PersonNew personNew07 = (PersonNew) ioc.getBean("personNew06");
+//        System.out.println(personNew07.getCarNew());
+
+          // bean继承问题
+//          PersonNew personNew08 = (PersonNew) ioc.getBean("personNew07");
+//          System.out.println(personNew08);
+
+//            PersonNew personNew09 = (PersonNew) ioc.getBean("personNew08");
+//            System.out.println(personNew09);
+
+        //bean之间的依赖，（改变创建顺序）
+        //System.out.println(ioc2);
+
+//        //单例模式测试
+//        Object personNew09 =  ioc2.getBean("carNew");
+//        Object personNew092 = ioc2.getBean("carNew");
+//        System.out.println(personNew09 == personNew092);
     }
 }

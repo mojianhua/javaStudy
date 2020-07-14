@@ -4,6 +4,11 @@ public class BookNew {
     private String bookName;
     private String author;
 
+    public BookNew(){
+        super();
+        System.out.println("BookNew被创建...");
+    }
+
     public void setBookName(String bookName){
         this.bookName = bookName;
     }

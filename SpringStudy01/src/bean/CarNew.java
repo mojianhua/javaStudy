@@ -5,6 +5,12 @@ public class CarNew {
     private int price;
     private String color;
 
+    //构造函数
+    public CarNew(){
+        super();
+        System.out.println("carNew被创建....");
+    }
+
     public void setCarName(String carName){
         this.carName = carName;
     }

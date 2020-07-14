@@ -10,6 +10,14 @@ public class PersonNew {
     private Map<String,Object> maps;
     private Properties properties;
     private String lastName;
+    private int age;
+    private String gender;
+
+    //构造函数
+    public PersonNew(){
+        super();
+        System.out.println("PersionNew被创建....");
+    }
 
     public void setCarNew(CarNew carNew){
         this.carNew = carNew;
@@ -49,5 +57,26 @@ public class PersonNew {
 
     public String getLastName(){
         return lastName;
+    }
+
+    public void setAge(int age){
+        this.age = age;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+
+    public String getGender(){
+        return gender;
+    }
+
+    @Override
+    public String toString(){
+        return "PersonNew [lastName = " + lastName + ",age = " + age + ",gender =" + gender + "]" ;
     }
 }

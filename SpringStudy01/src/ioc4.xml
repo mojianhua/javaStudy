@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- bean之间的依赖，（改变创建顺序） -->
+    <bean id="BookNew" class="bean.BookNew"></bean>
+    <bean id="PersonNew" class="bean.PersonNew"></bean>
+
+    <!-- bean作用域 ,scope
+        singleton:单例模式：默认的；
+            1）、在容器启动完成之前就已经创建好对象，保存在容器中
+            2）、任何获取都是获取之前创建好对象
+        prototype:多例模式
+            1) 、在容器启动默认不会去创建多实例
+            2）、获取的时候创建这个bean
+            3) 、每次获取都会创建一个新的对象
+    -->
+    <bean id="carNew" class="bean.CarNew" depends-on="BookNew,PersonNew" scope="singleton"></bean>
+</beans>

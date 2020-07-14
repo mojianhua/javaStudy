@@ -90,4 +90,32 @@
             <value>李四</value>
         </entry>
     </util:map>
+
+    <util:list id="myList01">
+        <list></list>
+        <bean class="bean.PersonNew"></bean>
+        <value>13</value>
+        <ref bean="myMap01"></ref>
+    </util:list>
+
+    <!-- 级联属性，赋值，级联属性：属性的属性 -->
+    <bean id="personNew06" class="bean.PersonNew">
+        <!-- 为car赋值的时候，改变car的价格 -->
+        <property name="carNew" ref="car011"></property>
+        <!-- 为car的price重新赋值 -->
+        <property name="carNew.price" value="9900000"></property>
+        <property name="carNew.carName" value="BYD"></property>
+    </bean>
+
+    <!-- bean继承问题 -->
+    <bean id="personNew07" class="bean.PersonNew">
+        <property name="lastName" value="阿吉1号"></property>
+        <property name="age" value="10"></property>
+        <property name="gender" value="男"></property>
+    </bean>
+
+    <!-- parent,指定当前bean的配置信息继承于哪个 -->
+    <bean id="personNew08" class="bean.PersonNew" parent="personNew07">
+        <property name="lastName" value="阿吉2号"></property>
+    </bean>
 </beans>
