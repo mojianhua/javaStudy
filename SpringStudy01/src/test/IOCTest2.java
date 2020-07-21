@@ -3,6 +3,7 @@ package test;
 import bean.BookNew;
 import java.util.List;
 import bean.PersonNew;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -66,5 +67,21 @@ public class IOCTest2 {
 //        Object personNew09 =  ioc2.getBean("carNew");
 //        Object personNew092 = ioc2.getBean("carNew");
 //        System.out.println(personNew09 == personNew092);
+
+//        //静态工厂模式
+//        Object airPlane01 = ioc2.getBean("airPlane01");
+//        System.out.println(airPlane01);
+
+//        //实例工厂模式
+//        Object airPlane02 = ioc2.getBean("airPlane02");
+//        System.out.println("容器启动完成..........." + airPlane02);
+
+//        //FactoryBean(是Spring规定的一个接口)
+//        Object bean = ioc2.getBean("myFactoryBeanImple");
+//        System.out.println(bean);
+
+        //bean生命周期，构造器------>初始化方法----->销毁方法
+        Object bookNew01 = ioc2.getBean("bookNew011");
+        System.out.println("容器关闭");
     }
 }
