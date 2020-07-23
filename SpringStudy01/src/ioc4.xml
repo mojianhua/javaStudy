@@ -4,64 +4,64 @@
        xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
-    <!-- bean之间的依赖，（改变创建顺序） -->
-    <bean id="BookNew" class="bean.BookNew"></bean>
-    <bean id="PersonNew" class="bean.PersonNew"></bean>
+<!--    &lt;!&ndash; bean之间的依赖，（改变创建顺序） &ndash;&gt;-->
+<!--    <bean id="BookNew" class="bean.BookNew"></bean>-->
+<!--    <bean id="PersonNew" class="bean.PersonNew"></bean>-->
 
-    <!-- bean作用域 ,scope
-        singleton:单例模式：默认的；
-            1）、在容器启动完成之前就已经创建好对象，保存在容器中
-            2）、任何获取都是获取之前创建好对象
-        prototype:多例模式
-            1) 、在容器启动默认不会去创建多实例
-            2）、获取的时候创建这个bean
-            3) 、每次获取都会创建一个新的对象
-    -->
-    <bean id="carNew" class="bean.CarNew" depends-on="BookNew,PersonNew" scope="singleton"></bean>
+<!--    &lt;!&ndash; bean作用域 ,scope-->
+<!--        singleton:单例模式：默认的；-->
+<!--            1）、在容器启动完成之前就已经创建好对象，保存在容器中-->
+<!--            2）、任何获取都是获取之前创建好对象-->
+<!--        prototype:多例模式-->
+<!--            1) 、在容器启动默认不会去创建多实例-->
+<!--            2）、获取的时候创建这个bean-->
+<!--            3) 、每次获取都会创建一个新的对象-->
+<!--    &ndash;&gt;-->
+<!--    <bean id="carNew" class="bean.CarNew" depends-on="BookNew,PersonNew" scope="singleton"></bean>-->
 
-    <!-- 配置通过静态工厂方法创建的bean、实例工厂方法创建的bean、FactoryBean -->
-    <!-- bean的创建默认就是框架利用反射new出来的bean实例 -->
-    <!-- 工厂模式：工厂帮我们创建对象；有一个专门帮我们创建对象的类，这类就是工厂
-        AirPlane ap = AirPlaneFactory.getAirPlane(String jzName);
+<!--    &lt;!&ndash; 配置通过静态工厂方法创建的bean、实例工厂方法创建的bean、FactoryBean &ndash;&gt;-->
+<!--    &lt;!&ndash; bean的创建默认就是框架利用反射new出来的bean实例 &ndash;&gt;-->
+<!--    &lt;!&ndash; 工厂模式：工厂帮我们创建对象；有一个专门帮我们创建对象的类，这类就是工厂-->
+<!--        AirPlane ap = AirPlaneFactory.getAirPlane(String jzName);-->
 
-        静态工厂：工厂本身不需要创建对象；通过静态方法调用，对象 = 工厂类.工厂方法名字();
-        实例工厂：工厂本身需要创建对象;工厂类工厂对象 = new 工厂类();工厂对象.getAirPlane("张三")
-     -->
+<!--        静态工厂：工厂本身不需要创建对象；通过静态方法调用，对象 = 工厂类.工厂方法名字();-->
+<!--        实例工厂：工厂本身需要创建对象;工厂类工厂对象 = new 工厂类();工厂对象.getAirPlane("张三")-->
+<!--     &ndash;&gt;-->
 
-    <!-- 1、静态工厂（不需要创建工厂本身）
-            class:指定静态工厂全类名
-            factory-method="getAirPlane" 指定哪个方法是工厂方法
-            constructor-arg:可以为方法传参
-            -->
-    <bean id="airPlane01" class="factory.AirPlaneStaticFactory" factory-method="getAirPlane">
-        <!-- 可以为方法指定参数 -->
-        <constructor-arg value="李四" name="jzName"></constructor-arg>
-    </bean>
+<!--    &lt;!&ndash; 1、静态工厂（不需要创建工厂本身）-->
+<!--            class:指定静态工厂全类名-->
+<!--            factory-method="getAirPlane" 指定哪个方法是工厂方法-->
+<!--            constructor-arg:可以为方法传参-->
+<!--            &ndash;&gt;-->
+<!--    <bean id="airPlane01" class="factory.AirPlaneStaticFactory" factory-method="getAirPlane">-->
+<!--        &lt;!&ndash; 可以为方法指定参数 &ndash;&gt;-->
+<!--        <constructor-arg value="李四" name="jzName"></constructor-arg>-->
+<!--    </bean>-->
 
-    <!-- 2、实例工厂使用
-           class:指定静态工厂全类名
-           factory-method="getAirPlane"
-           -->
-    <bean id="AirPlaneInstanceFactory" class="factory.AirPlaneInstanceFactory"></bean>
+<!--    &lt;!&ndash; 2、实例工厂使用-->
+<!--           class:指定静态工厂全类名-->
+<!--           factory-method="getAirPlane"-->
+<!--           &ndash;&gt;-->
+<!--    <bean id="AirPlaneInstanceFactory" class="factory.AirPlaneInstanceFactory"></bean>-->
 
-    <!-- factory-bean:指定当前对象创建使用哪个工厂
-        1、先配置出实例工厂对象
-        2、配置我们要创建的AirPlane使用哪个工厂创建
-            1）、factory-bean,指定使用哪个工厂实例
-            2）、factory-method,使用哪个工厂方法
-     -->
-    <bean id="airPlane02" class="factory.AirPlane"
-          factory-bean="AirPlaneInstanceFactory"
-          factory-method="getAirPlane">
-        <constructor-arg name="jzName" value="王5"></constructor-arg>
-    </bean>
+<!--    &lt;!&ndash; factory-bean:指定当前对象创建使用哪个工厂-->
+<!--        1、先配置出实例工厂对象-->
+<!--        2、配置我们要创建的AirPlane使用哪个工厂创建-->
+<!--            1）、factory-bean,指定使用哪个工厂实例-->
+<!--            2）、factory-method,使用哪个工厂方法-->
+<!--     &ndash;&gt;-->
+<!--    <bean id="airPlane02" class="factory.AirPlane"-->
+<!--          factory-bean="AirPlaneInstanceFactory"-->
+<!--          factory-method="getAirPlane">-->
+<!--        <constructor-arg name="jzName" value="王5"></constructor-arg>-->
+<!--    </bean>-->
 
-    <!-- FactoryBean(是Spring规定的一个接口)；只要是这个接口的实现类，
-         Spring都认为是一个工厂;
-         ioc容器启动的时候不会创建对象;
-         -->
-    <bean id="myFactoryBeanImple" class="factory.MyFactoryBeanImple">
-    </bean>
+<!--    &lt;!&ndash; FactoryBean(是Spring规定的一个接口)；只要是这个接口的实现类，-->
+<!--         Spring都认为是一个工厂;-->
+<!--         ioc容器启动的时候不会创建对象;-->
+<!--         &ndash;&gt;-->
+<!--    <bean id="myFactoryBeanImple" class="factory.MyFactoryBeanImple">-->
+<!--    </bean>-->
 
     <!-- bean的生命周期
         生命周期：bean的创建到销毁；
@@ -74,5 +74,11 @@
      -->
     <bean id="bookNew011" class="bean.BookNew"
           destroy-method="bookDestory" init-method="bookInit" scope="prototype">
+    </bean>
+
+    <!-- 测试bean的后置处理器：BeanPostPostProcessor;Spring有一个接口，
+         后置处理器：可以在bean的初始化前后调用方法 -->
+    <bean class="bean.MyBeanPostProcessor">
+
     </bean>
 </beans>
