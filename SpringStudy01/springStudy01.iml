@@ -8,6 +8,9 @@
           <file>file://$MODULE_DIR$/src/ioc2.xml</file>
           <file>file://$MODULE_DIR$/src/ioc3.xml</file>
         </fileset>
+        <fileset id="fileset2" name="ApplicationContent02" removed="false">
+          <file>file://$MODULE_DIR$/src/applicationContent02.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
