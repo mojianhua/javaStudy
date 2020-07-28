@@ -12,6 +12,7 @@ public class PersonNew {
     private String lastName;
     private int age;
     private String gender;
+    private double salary;
 
     //构造函数
     public PersonNew(){
@@ -75,8 +76,17 @@ public class PersonNew {
         return gender;
     }
 
+    public void setSalary(double salary){
+        this.salary = salary;
+    }
+
+    public double getSalary(){
+        return salary;
+    }
+
     @Override
     public String toString(){
-        return "PersonNew [lastName = " + lastName + ",age = " + age + ",gender =" + gender + "]" ;
+        return "PersonNew [lastName = " + lastName + ",age = " + age + ",gender =" + gender + "]" +
+                "CarNew " + carNew + "bookNew" + bookNew + "[salary " + salary + "]";
     }
 }
