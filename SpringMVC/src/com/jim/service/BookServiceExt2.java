@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookService {
+public class BookServiceExt2 {
 
     //自动装配，自动的为这个属性赋值
     @Autowired

@@ -1,5 +1,6 @@
 package com.jim.test;
 
+import com.jim.servlet.BookServlet;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,8 +16,11 @@ public class IOCTest {
          * 1、组件id.默认是组件类名的手字母小写
          * 2、组件的作用域默认就是单例模式
          * */
-        Object bean1 = ioc.getBean("bookDao");
-        Object bean2 = ioc.getBean("bookDao");
-        System.out.println(bean1 == bean2);
+//        Object bean1 = ioc.getBean("bookDao");
+//        Object bean2 = ioc.getBean("bookDao");
+//        System.out.println(bean1 == bean2);
+
+        BookServlet bookServlet = ioc.getBean(BookServlet.class);
+        bookServlet.doGet();
     }
 }
