@@ -27,12 +27,16 @@ public class BookServlet {
      *                  private BookService bookServiceExt2;指定一个新的id
      *                      1）、找到装配，
      *                      2）、找不到报错
+     *  自动装配
+     * @Autowire、@Resource
+     * @Autowired：最强大；Spring自己的注释
+     * @Resource：扩展性更强；如果切换成另外一个容器框架,@Resource还是可以使用的，@Autowired不能
      * */
-    @Qualifier("bookService")
+    //@Qualifier("bookService")
     @Autowired
-    private BookService bookServiceExt2;
+    private BookService BookService;
 
     public void doGet(){
-        bookServiceExt2.save();
+        BookService.save();
     }
 }

@@ -1,6 +1,6 @@
 package com.jim.dao;
 
-import org.springframework.context.annotation.Scope;
+import com.jim.bean.Book;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,9 +10,14 @@ import org.springframework.stereotype.Repository;
  * @Scope(value=“prototype”)
  * */
 @Repository
-public class BookDao {
+public class BookDao extends BaseDao <Book>{
 
     public void saveBook(){
         System.out.println("图书已经保存.........");
+    }
+
+    @Override
+    public void save(){
+        System.out.println("BookDao正在做新的保存方法.......");
     }
 }
