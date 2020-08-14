@@ -33,11 +33,14 @@ public class CalculatorProxy {
                     //System.out.println("["+method.getName()+"]方法开始执行，用的参数是"+ Arrays.asList(args));
                     LogUtils.LogStart(method,args);
                     result = method.invoke(calculator,args);
-                    System.out.println("[" + method.getName()+ "]方法执行的结果是" + result);
+                    //System.out.println("[" + method.getName()+ "]方法执行的结果是" + result);
+                    LogUtils.LogResult(method,result);
                 }catch (Exception e){
-                    System.out.println("[" + method.getName() + "]方法异常了，异常信息是" + e.getCause());
+                    //System.out.println("[" + method.getName() + "]方法异常了，异常信息是" + e.getCause());
+                    LogUtils.LogException(method,e.getCause());
                 }finally {
-                    System.out.println("[" + method.getName() + "]方法最终结果");
+                    LogUtils.LogFinally(method,result);
+                    //System.out.println("[" + method.getName() + "]方法最终结果");
                 }
                 return result;
             }
