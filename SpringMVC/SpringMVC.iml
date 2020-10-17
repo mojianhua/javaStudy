@@ -12,7 +12,15 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="ApplicationContent2" removed="false">
+          <file>file://$MODULE_DIR$/src/conf/applicationContent2.xml</file>
+          <file>file://$MODULE_DIR$/src/conf/applicationContent.xml</file>
+        </fileset>
+        <fileset id="fileset2" name="ApplicationContent3" removed="false">
+          <file>file://$MODULE_DIR$/src/conf/applicationContent3.xml</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">

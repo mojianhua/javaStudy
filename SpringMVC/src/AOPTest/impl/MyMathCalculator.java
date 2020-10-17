@@ -1,8 +1,9 @@
 package AOPTest.impl;
 
 import AOPTest.inter.Calculator;
-import AOPTest.utils.LogUtils;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MyMathCalculator implements Calculator {
 
     @Override

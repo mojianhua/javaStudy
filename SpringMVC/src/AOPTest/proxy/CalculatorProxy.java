@@ -31,15 +31,15 @@ public class CalculatorProxy {
                 Object result = null;
                 try {
                     //System.out.println("["+method.getName()+"]方法开始执行，用的参数是"+ Arrays.asList(args));
-                    LogUtils.LogStart(method,args);
+                    LogUtils.logStart(method,args);
                     result = method.invoke(calculator,args);
                     //System.out.println("[" + method.getName()+ "]方法执行的结果是" + result);
-                    LogUtils.LogResult(method,result);
+                    LogUtils.logResult(method,result);
                 }catch (Exception e){
                     //System.out.println("[" + method.getName() + "]方法异常了，异常信息是" + e.getCause());
-                    LogUtils.LogException(method,e.getCause());
+                    LogUtils.logException(method,e.getCause());
                 }finally {
-                    LogUtils.LogFinally(method,result);
+                    LogUtils.logFinally(method,result);
                     //System.out.println("[" + method.getName() + "]方法最终结果");
                 }
                 return result;

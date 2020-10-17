@@ -1,7 +1,10 @@
 package AOPTest.inter;
 
-public interface Calculator {
 
+import org.springframework.stereotype.Component;
+
+@Component
+public interface Calculator {
     public int add(int i,int j);
     public int sub(int i,int j);
     public int mul(int i,int j);
