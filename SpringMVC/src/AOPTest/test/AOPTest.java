@@ -26,8 +26,15 @@ public class AOPTest {
 //        myMathCalculator.add(1,2);
 
 
+        //AOP的底层是动态代理，容器中保存的组件是他的代理对象
         Calculator bean = ioc3.getBean(Calculator.class);
         bean.add(1,2);
+        System.out.println(bean.getClass());
+
+        //没接口就是本类类型
+        MyMathCalculator bean2 = ioc3.getBean(MyMathCalculator.class);
+        bean2.add(1,2);
+        System.out.println(bean.getClass());
     }
 
 
