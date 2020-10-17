@@ -20,6 +20,9 @@
         <fileset id="fileset2" name="ApplicationContent3" removed="false">
           <file>file://$MODULE_DIR$/src/conf/applicationContent3.xml</file>
         </fileset>
+        <fileset id="fileset3" name="ApplicationContent" removed="false">
+          <file>file://$MODULE_DIR$/src/JdbcTemplate/conf/applicationContent.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
