@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 包扫描 -->
+    <context:component-scan base-package="com.jim"></context:component-scan>
 
     <!-- 加载配置文件 -->
     <context:property-placeholder location="conf/dbconfig.properties"></context:property-placeholder>
@@ -21,4 +25,19 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+
+    <!-- 配置一个具有 具名参数 功能的JdbcTemplate:NameParameterJdbcTemplate -->
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <!-- 使用构造器方式注入一个数据源 -->
+        <constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <!-- 事务控制 -->
+    <!-- 1:配置事务管理器让其进行事务控制 -->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 控制数据源 -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 3:开启基于注解得事务控制模式：依赖transactionManager名称空间 -->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
 </beans>
