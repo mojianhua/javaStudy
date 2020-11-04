@@ -33,8 +33,10 @@ public class jdbcTemplateTest {
     @Test
     public void test10(){
         BookService bookService = ioc.getBean(BookService.class);
-        bookService.checkOut("jj1","b1");
-        System.out.println("结账完成");
+//        bookService.checkOut("jj1","b1");
+//        bookService.checkOutNew("jj1","b1");
+        double price = bookService.getPrice("b1");
+        System.out.println(price);
     }
 
     /**
