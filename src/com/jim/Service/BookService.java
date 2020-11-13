@@ -4,6 +4,7 @@ import com.jim.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
@@ -32,8 +33,38 @@ public class BookService {
     /**
      * 事务细节：
      * isolation-Isolation:事务隔离级别
+     * Spring定义了7种传播行为
+     * REQUIRED：如果事务在运行，当前的方法就在这个事务内运行，否则就启动一个新的事务，并在自己的事务内运行
+     * REQUIRED_NEW：当前的方法必须启动新的事务，并在它自己的事务内运行，如果有事务正在运行，应该将他挂起
+     * SUPPORTS：如果有事务在运行，当前的方法就在这个事务运行，否则它可以不运行在事务中
+     * NOT_SUPPORTS：当前的方法不应该运行在事务中，如果有运行的事务将他挂起
+     * NEVER：当前的方法不应该运行在事务中，如果有运行的事务，就抛出异常
+     * NESTED：如果有事务在运行，当前的方法就应该在这个事务的嵌套事务中运行，否则就启动一个新的事务，并在它自己的事务内运行
+     *
+     *
      * propagation-Propagation:事务的传统行为
      *
+     * 隔离级别：
+     * 读未提交：READ UNCOMMITTED
+     *          1、会造成脏读
+     * 读已提交：READ COMMITTED
+     *          1、可以避免脏读，但是避免不可重复读，
+     *             如在同一方法中，当提交后，再次读取，就会造成不同的结果
+     * 可重复读：REPEATABLE READ
+     *          1、只要在同一个事务中，（快照读），第一次是什么，以后就是什么，即使外界的数据都没了
+     * 串行化：SERIALIZABLE
+     * 修改Mysql隔离级别
+     * SET [SESSION | GLOBAL] TRANSACTION ISOLATION {READ UNCOMMITTED | READ COMMITTED |}
+     * 如：SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+     *
+     * 查询Mysql的隔离级别
+     * SELECT @@global.tx_isolation; //查询全局隔离级别
+     * SELECT @@session.tx_isolation: //查询当前会话隔离级别
+     *
+     * 事务操作
+     * 开启事务：start transaction;
+     * 提交事务：commit;
+     * 回滚事务：rollback;
      *
      * 错误信息：java.lang.ArithmeticException: / by zero
      * noRollbackFor-Class[]:哪些异常事务可以不回滚
@@ -52,7 +83,8 @@ public class BookService {
      *      readOnly=true:加快查询速度：不用管事务那一堆操作
      * timeout-int:超时时间设置,事务超出指定执行时长后自动终止并回滚
      * */
-    @Transactional(timeout = 3,readOnly = false,noRollbackFor = {ArithmeticException.class},rollbackFor = {FileNotFoundException.class})
+//    @Transactional(timeout = 3,readOnly = false,noRollbackFor = {ArithmeticException.class},rollbackFor = {FileNotFoundException.class})
+    @Transactional(propagation = Propagation.REQUIRED)
     public void checkOutNew(String username,String isbn){
         //1、减库存
         bookDao.updateStock(isbn);
@@ -76,6 +108,11 @@ public class BookService {
         }catch (FileNotFoundException e){
             System.out.println("文件不存在");
         }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updatePrice(String isbn,double price){
+        bookDao.updatePrice(isbn,price);
     }
 
     /**

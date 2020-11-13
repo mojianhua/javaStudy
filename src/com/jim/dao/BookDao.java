@@ -3,6 +3,8 @@ package com.jim.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class BookDao {
@@ -32,5 +34,14 @@ public class BookDao {
     public void updateStock(String isbn){
         String sql = "UPDATE book_stock SET stock=stock-1 WHERE isbn=?";
         jdbcTemplate.update(sql,isbn);
+    }
+
+    /**
+     * 改图书价格
+     * */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updatePrice(String isbn,double price){
+        String sql = "UPDATE book set price = ? where isbn = ?";
+        jdbcTemplate.update(sql,price,isbn);
     }
 }

@@ -1,6 +1,7 @@
 package com.jim.test;
 
 import com.jim.Service.BookService;
+import com.jim.Service.MulService;
 import com.jim.bean.Employee;
 import com.jim.dao.EmployeeDao;
 import org.junit.Test;
@@ -35,8 +36,11 @@ public class jdbcTemplateTest {
         BookService bookService = ioc.getBean(BookService.class);
 //        bookService.checkOut("jj1","b1");
 //        bookService.checkOutNew("jj1","b1");
-        double price = bookService.getPrice("b1");
-        System.out.println(price);
+//        double price = bookService.getPrice("b1");
+//        System.out.println(price);
+
+        MulService mulService = ioc.getBean(MulService.class);
+        mulService.mulTx();
     }
 
     /**
