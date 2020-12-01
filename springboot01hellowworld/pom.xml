@@ -30,6 +30,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <!-- 引入jq在访问的时候只需要些webjars下面资源的名称即可以 -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.1.1</version>
+        </dependency>
     </dependencies>
 
     <!-- 这个插件，可以将应用打包成一个可执行的包，执行命令：java -jar xxx.jar包名 -->
