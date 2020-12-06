@@ -1,0 +1,10 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:8889/jdbc
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  autoconfigure:
+      exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
