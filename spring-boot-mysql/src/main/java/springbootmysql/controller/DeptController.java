@@ -32,6 +32,6 @@ public class DeptController {
 
     @GetMapping("/emp/{id}")
     public Employees getEmp(@PathVariable("id") Integer id){
-        return employeesMapper.getEmpNewById(id);
+        return employeesMapper.getEmpById(id);
     }
 }
