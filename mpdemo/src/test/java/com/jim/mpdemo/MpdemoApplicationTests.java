@@ -22,5 +22,6 @@ class MpdemoApplicationTests {
     public void findAll(){
         List<User> users = userMapper.selectList(null);
         System.out.println(users);
+        
     }
 }
