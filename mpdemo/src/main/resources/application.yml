@@ -4,6 +4,3 @@ spring:
     url: jdbc:mysql://localhost:3306/mqdemo?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false       #springboot超过
     username: root
     password: root
-mybatis:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl    #mybatis日志

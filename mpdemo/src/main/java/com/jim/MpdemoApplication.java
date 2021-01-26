@@ -1,15 +1,15 @@
-package com.jim.mpdemo202101;
+package com.jim;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.jim.mpdemo202101.mapper")
-public class Mpdemo202101Application {
+@MapperScan({"com.jim.mapper"})
+public class MpdemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Mpdemo202101Application.class, args);
+        SpringApplication.run(MpdemoApplication.class, args);
     }
 
 }

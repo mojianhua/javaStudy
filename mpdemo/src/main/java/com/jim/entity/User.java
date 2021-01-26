@@ -1,4 +1,4 @@
-package com.jim.mpdemo202101.entity;
+package com.jim.entity;
 
 import lombok.Data;
 

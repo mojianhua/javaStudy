@@ -1,7 +1,7 @@
-package com.jim.mpdemo202101;
+package com.jim.mpdemo;
 
-import com.jim.mpdemo202101.entity.User;
-import com.jim.mpdemo202101.mapper.UserMapper;
+import com.jim.entity.User;
+import com.jim.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,10 +9,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class Mpdemo202101ApplicationTests {
+class MpdemoApplicationTests {
 
     @Autowired
     private UserMapper userMapper;
+    @Test
+    void contextLoads() {
+    }
 
     //查询user表所有数据
     @Test
