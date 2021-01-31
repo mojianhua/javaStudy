@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver       #spring超过2.1就要换成cj包
+    url: jdbc:mysql://localhost:8889/guli?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false       #springboot超过
+    username: root
+    password: root
+  application:
+    name: service-edu  #服务名
+  profiles:
+    active: dev    #环境设置
+#端口名
+server:
+  port: 8081
