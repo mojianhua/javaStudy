@@ -16,7 +16,6 @@ public class CodeGenerator {
     public void run(){
         //1、创建代码生成器
         AutoGenerator mpg = new AutoGenerator();
-
         //2、全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
@@ -28,10 +27,11 @@ public class CodeGenerator {
         gc.setIdType(IdType.ID_WORKER); //主键策略
         gc.setDateType(DateType.ONLY_DATE); //定于生成实体类日期类型
         gc.setSwagger2(true); //是否开启Swagger2模式
+        mpg.setGlobalConfig(gc);
 
         //3、数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:8889/guli?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false");
+        dsc.setUrl("jdbc:mysql://localhost:3306/guli?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
@@ -41,15 +41,17 @@ public class CodeGenerator {
         //4、包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("edu"); //模块名
-        pc.setParent("com.example.demo");
+        pc.setParent("com.jim");
         pc.setController("controller");
         pc.setEntity("entity");
         pc.setMapper("mapper");
+        pc.setService("service");
         mpg.setPackageInfo(pc);
 
         //策略配置
         StrategyConfig strategy= new StrategyConfig();
         strategy.setInclude("edu_teacher");          //设置生成表，如果多个表则逗号隔开，如：strategy.setInclude("edu_teacher","edu_teacher2");
+        strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setTablePrefix(pc.getModuleName() + "_");  //生成实体时去掉前缀，如：create_at 变成 createTime
 
         strategy.setColumnNaming(NamingStrategy.underline_to_camel); //数据库字段映射到实体的策略名称
