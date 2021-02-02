@@ -8,6 +8,12 @@ spring:
     name: service-edu  #服务名
   profiles:
     active: dev    #环境设置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss   #返回json的全局时间格式
+    time-zone: GMT+8
 #端口名
 server:
   port: 8001
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #mybatis日志

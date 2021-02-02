@@ -17,6 +17,14 @@
     </modules>  <!-- 定于父工程 -->
 
     <dependencies>
+        <!-- 在service引入service_base依赖 -->
+        <dependency>
+            <groupId>com.jim</groupId>
+            <artifactId>service_base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
         <!--<dependency>-->
             <!--<groupId>org.springframework.cloud</groupId>-->
             <!--<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>-->
