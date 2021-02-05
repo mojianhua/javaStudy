@@ -5,6 +5,7 @@
 4、统一返回的json时间格式，在配置文件（resources/application.yml）添加
 5、安装逻辑删除插件，保存到EduConfig中的ISqlInjector
     5.1、然后在对应的逻辑删除字段加上@TableField修饰器
+6、安装分页插件，保存到EduConfig中的PaginationInterceptor
 
 二、公共类
 1、创建公共模块，整合swagger，为了所有模块都能进行使用

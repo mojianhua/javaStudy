@@ -1,6 +1,7 @@
 package com.jim.edu.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jim.commonutils.R;
 import com.jim.edu.entity.Teacher;
 import com.jim.edu.service.TeacherService;
@@ -10,7 +11,9 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -47,6 +50,29 @@ public class TeacherController {
         //调用service的方法实现所有的操作
         List<Teacher> list = teacherService.list(null);
         return R.ok().data("item",list);
+    }
+
+    /**1.2分页查询讲师的方法，
+     * current 当前页
+     * limit 每页记录数
+    */
+    @GetMapping("pageTeacher/{current}/{limit}")
+    public R pageListTeacher(@PathVariable long current,@PathVariable long limit){
+        //创建page对象
+        Page<Teacher> pageTeacher = new Page<>(current,limit);
+        //调用分页方法
+        //调用方法的时候，底层封装，把分页数据封装到pageTeacher对象里面
+        teacherService.page(pageTeacher,null);
+
+        //记录总数
+        long total = pageTeacher.getTotal(); //总记录数
+        List<Teacher> records = pageTeacher.getRecords(); //数据list
+
+        //赋值
+        Map map = new HashMap();
+        map.put("total",total);
+        map.put("rows",records);
+        return R.ok().data(map);
     }
 
     /**2、删除方法
