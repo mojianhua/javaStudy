@@ -23,12 +23,13 @@
             <artifactId>service_base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!-- 在service引入common_utils依赖 -->
-        <dependency>
-            <groupId>com.jim</groupId>
-            <artifactId>common_utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
+<!--        &lt;!&ndash; 在service引入common_utils依赖 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.jim</groupId>-->
+<!--            <artifactId>common_utils</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
 
         <!--<dependency>-->

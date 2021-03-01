@@ -6,6 +6,9 @@
 5、安装逻辑删除插件，保存到EduConfig中的ISqlInjector
     5.1、然后在对应的逻辑删除字段加上@TableField修饰器
 6、安装分页插件，保存到EduConfig中的PaginationInterceptor
+7、带条件查询
+    7.1、把条件值封装到对象里面，把对象传到接口里面，com.jim.edu.entity.vo;
+    7.2、根据条件进行判断拼接
 
 二、公共类
 1、创建公共模块，整合swagger，为了所有模块都能进行使用
@@ -26,3 +29,8 @@
     7.2、在common_utils里面创建返回状态码，common_utils.com.jim.commonutils.ResultCode
     7.3、在common_utils里面创建返回结果R，common_utils.com.jim.commonutils.R
     7.4、在service的pom.xml引入common_utils依赖
+8、自定义填充添加时间和更新时间
+    8.1、在service_base里面添加handler，添加MyMetaObjectHandler类
+    8.2、在对应的类里面的createTime和updateTime对象添加修饰器
+9、统一异常类
+    9.1、在service_base里面添加exceptionhandler，添加GlobalExceptionHandler类

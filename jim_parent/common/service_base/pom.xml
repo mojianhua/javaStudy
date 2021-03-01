@@ -11,5 +11,13 @@
 
     <artifactId>service_base</artifactId>
 
+    <dependencies>
+        <!-- 在service引入service_base依赖 -->
+        <dependency>
+            <groupId>com.jim</groupId>
+            <artifactId>common_utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

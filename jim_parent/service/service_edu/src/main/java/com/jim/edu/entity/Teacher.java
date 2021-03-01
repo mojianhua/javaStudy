@@ -51,8 +51,14 @@ public class Teacher implements Serializable {
     @TableLogic
     private Boolean isDeleted;
 
+    //自动填充
+    @ApiModelProperty(value = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
+    //自动填充
+    @ApiModelProperty(value = "更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
 
